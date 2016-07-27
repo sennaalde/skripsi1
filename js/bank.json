@@ -1,0 +1,186 @@
+[{
+	"lat":-7.990843,
+	"lng":112.6316533,
+	"type":"KW",
+	"unit":"MALANG",	
+	"address":"Jl. Laksmana Martadinata 80, Malang",
+	"telp":"(0341) 474949",
+	"fax":"(0341) 474944, 474945, 474935"
+},{
+	"lat":-7.9288655,
+	"lng":112.7100443,
+	"type":"KK",
+	"unit":"Bandara Abdulrahman Saleh",
+	"address":"Kompleks Bandara Abdulrahman Saleh, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9779582,
+	"lng":112.6274616,
+	"type":"KCP",
+	"unit":"Basuki Rahmat",
+	"address":"Jl. Basuki Rahmat No. 22 C, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9677332,
+	"lng":112.6113861,
+	"type":"KCP",
+	"unit":"Galunggung",
+	"address":"Jl. Galunggung No.58 I-J, Malang",
+	"telp":"(0341) 571565",
+	"fax":"(0341) 574023"
+},{
+
+	"lat":-7.9354697,
+	"lng":112.6423063,
+	"type":"KK",
+	"unit":"Kanwil Malang",
+	"address":"Ruko De Panorama Square Kav.A6-A7, Jl. A.Yani Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9779982,
+	"lng":112.6230098,
+	"type":"KC",
+	"unit":"KAWI",
+	"address":"Jl. Kawi No. 20-22, Malang",
+	"telp":"(0341)327666, 328208, 362217",
+	"fax":"(0341)328106"
+},{
+	"lat":-7.8290819,
+	"lng":112.6974898,
+	"type":"KCP",
+	"unit":"Lawang",
+	"address":"Jl. Raya Thamrin Blok AJ-1",
+	"telp":"(0341)423540",
+	"fax":"(0341)423423"
+},{
+	"lat":-7.9769759,
+	"lng":112.6216204,
+	"type":"KK",
+	"unit":"Mall Olympic Garden",
+	"address":"Mall Olympic Garden, First Floor Jl. Kawi No.62, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9906983,
+	"lng":112.6315892,
+	"type":"KC",
+	"unit":"M.DINATA",
+	"address":"Jl. Laks. Martadinata No. 81, Malang",
+	"telp":"(0341) 368681",
+	"fax":"(0341) 363831"
+},{
+	"lat":-7.950658,
+	"lng":112.6002992,
+	"type":"KK",
+	"unit":"MX Mall",
+	"address":"Jl. Veteran No. 08, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9852824,
+	"lng":112.6261552,
+	"type":"KCP",
+	"unit":"Pasar Besar",
+	"address":"Jl. Sutan Syahrir No.6, Malang",
+	"telp":"(0341) 326677, 324144",
+	"fax":"(0341) 326677"
+},{
+	"lat":-7.9741925,
+	"lng":112.6335445,
+	"type":"KCP",
+	"unit":"Rampal",
+	"address":"Ruko Pattimura 10-11, Jl. Pattimura, Malang",
+	"telp":"(0341) 352802",
+	"fax":"(0341) 352801"
+},{
+	"lat":-7.9741818,
+	"lng":112.6335445,
+	"type":"KCP",
+	"unit":"RS Syaiful Anwar",
+	"address":"Jl. Jaksa Agung Suprapto no 2, Malang",
+	"telp":"(0341) 361771",
+	"fax":"(0341) 361771"
+},{
+	"lat":-7.9800022,
+	"lng":112.6544198,
+	"type":"KCP",
+	"unit":"Sawojajar",
+	"address":"Jl. Danau Toba E5/12, Sawojajar, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-8.0115056,
+	"lng":112.618359,
+	"type":"KK",
+	"unit":"Sukun",
+	"address":"Jl Sudanco Supriyadi, RT.11 RW.02, Kebonsari, Sukun, Malang",
+	"telp":"(0341) 800272",
+	"fax":"(0341) 800273"
+},{
+	"lat":-7.960073,
+	"lng":112.6348209,
+	"type":"KC",
+	"unit":"SUTOYO",
+	"address":"Jl. Letjen Sutoyo No. 105, Malang",
+	"telp":"(0341) 482599",
+	"fax":"(0341) 487626"
+},{
+	"lat":-7.921624,
+	"lng":112.5931713,
+	"type":"KCP",
+	"unit":"Tlogo Mas",
+	"address":"Jl. Raya Tlogomas Dau, Malang",
+	"telp":"(0341) 532352, 532351",
+	"fax":"(0341) 532352"
+},{
+	"lat":-7.9506847,
+	"lng":112.6068653,
+	"type":"KK",
+	"unit":"UIN Malang",
+	"address":"Jl. Gajayana 50, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9429727,
+	"lng":112.6014615,
+	"type":"KCP",
+	"unit":"UNIBRAW",
+	"address":"Jl. M.T. Haryono, Malang",
+	"telp":"(0341) 575952/53",
+	"fax":"(0341) 575901"
+},{
+	"lat":-7.9522157,
+	"lng":112.6371943,
+	"type":"KK",
+	"unit":"Univ Kanjuruan Malang",
+	"address":"Jl S Supriadi no.48, Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9655087,
+	"lng":112.6156033,
+	"type":"KK",
+	"unit":"Univ Negri Malang",
+	"address":"Jl Surabaya no.6 Malang",
+	"telp":"",
+	"fax":""
+},{
+	"lat":-7.9372297,
+	"lng":112.6058973,
+	"type":"KK",
+	"unit":"Universitas Islam Negeri Malang",
+	"address":"Jl Mayjend Haryono no 193, Malang",
+	"telp":"(0341) 573344",
+	"fax":"(0341) 573344"
+},{
+	"lat":-7.9905312,
+	"lng":112.6322298,
+	"type":"KANINS",
+	"unit":"MALANG",
+	"address":"Jl. Laksmana Martadinata 80 Lt. 4, Malang",
+	"telp":"(0341) 555422, 555425, 555620, 555423, 555420",
+	"fax":""
+}]

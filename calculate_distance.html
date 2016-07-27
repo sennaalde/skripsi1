@@ -1,0 +1,234 @@
+<?php
+include 'koneksi.php';
+?>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title></title>
+		<link href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css" rel="stylesheet"/>	
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+		<script>
+			$(document).ready(function() {				
+
+				//Hotel Asal
+				$("#hotel_asal").load("suggest_hotel.php", "op=ambiloption");
+				$("#hotel_asal").change(function() {
+					nama = $("#hotel_asal").val();
+					$.ajax({
+						url : "suggest_hotel.php",
+						//method : 'POST',
+						data : "op=ambildata&nama=" + nama,
+						cache : false,
+						success : function(msg) {
+							data = msg.split("|");
+							$("#id_hotel_asal").val(data[0]);
+							$("#nama_hotel_asal").val(data[1]);
+							$("#lat_hotel_asal").val(data[2]);
+							$("#long_hotel_asal").val(data[3]);
+							$("#id_hotel_asal_maps").val(data[4]);
+						}
+					});
+				});
+
+				//Hotel Asal
+				$("#hotel_tujuan").load("suggest_hotel.php", "op=ambiloption");
+				$("#hotel_tujuan").change(function() {
+					nama = $("#hotel_tujuan").val();
+					$.ajax({
+						url : "suggest_hotel.php",
+						//method : 'POST',
+						data : "op=ambildata&nama=" + nama,
+						cache : false,
+						success : function(msg) {
+							data = msg.split("|");
+							$("#id_hotel_tujuan").val(data[0]);
+							$("#nama_hotel_tujuan").val(data[1]);
+							$("#lat_hotel_tujuan").val(data[2]);
+							$("#long_hotel_tujuan").val(data[3]);
+							$("#id_hotel_tujuan_maps").val(data[4]);
+						}
+					});
+				});
+
+				//Tampil Rute
+				$("#rute").click(function() {
+					nama_hotel_asal = $("#nama_hotel_asal").val();
+					nama_hotel_tujuan = $("#nama_hotel_tujuan").val();
+					if (id_hotel_asal != 0 && id_hotel_tujuan != 0) {
+						data = "&nama_hotel_asal=" + nama_hotel_asal + "&nama_hotel_tujuan=" + nama_hotel_tujuan;
+						$.ajax({
+							url : "get_route.php",
+							//method : 'POST',
+							data : "op=dapat_rute" + data,
+							cache : false,
+							success : function(msg) {
+								$("#data-rute").html(msg);
+							}
+						});
+					}
+				});
+
+				//Pilih Rute
+				//Tampil Rute
+				$("#certain_route").click(function() {
+					nama_hotel_asal = $("#nama_hotel_asal").val();
+					nama_hotel_tujuan = $("#nama_hotel_tujuan").val();
+					if (id_hotel_asal != 0 && id_hotel_tujuan != 0) {
+						data = "&nama_hotel_asal=" + nama_hotel_asal + "&nama_hotel_tujuan=" + nama_hotel_tujuan;
+						$.ajax({
+							url : "get_route.php",
+							//method : 'POST',
+							data : "op=pilih_rute" + data,
+							cache : false,
+							success : function(msg) {
+								$("#route_floyd_warshall").show();
+								$("#map_canvas").show();
+								data = msg.split("|");
+								$("#result_certain_route1").html(data[0]);
+								$("#distance_route1").html(data[1]);
+								$("#result_certain_route2").html(data[2]);
+								$("#distance_route2").html(data[3]);
+								$("#best_route").html(data[4]);
+								$("#crossroad_best_route").html(data[5]);
+								$("#distance_best_route").html(data[6]);
+							}
+						});
+					}
+				});
+
+			});
+		</script>
+		<script>
+			//Menghitung Jarak
+			function distance(lat1, lon1, lat2, lon2, unit) {
+				var radlat1 = Math.PI * lat1 / 180
+				var radlat2 = Math.PI * lat2 / 180
+				var radlon1 = Math.PI * lon1 / 180
+				var radlon2 = Math.PI * lon2 / 180
+				var theta = lon1 - lon2
+				var radtheta = Math.PI * theta / 180
+				var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+				dist = Math.acos(dist)
+				dist = dist * 180 / Math.PI
+				dist = dist * 60 * 1.1515
+				if (unit == "K") {
+					dist = dist * 1.609344
+				}
+				if (unit == "N") {
+					dist = dist * 0.8684
+				}
+				return dist
+			}
+
+			var lati1, long1, lati2, long2;
+			var lati1Float, long1Float, lati2Float, long2Float;
+			function getdist() {
+				lati1 = document.getElementById('lat_hotel_asal').value;
+				lati1Float = parseFloat(lati1);
+				long1 = document.getElementById('long_hotel_asal').value;
+				long1Float = parseFloat(long1);
+				lati2 = document.getElementById('lat_hotel_tujuan').value;
+				lati2Float = parseFloat(lati2);
+				long2 = document.getElementById('long_hotel_tujuan').value;
+				long2Float = parseFloat(long2);
+				var distance_num = distance(lati1Float, long1Float, lati2Float, long2Float);
+				var dist = distance_num.toFixed(2);
+				document.getElementById('distance').innerHTML = dist + " Km";
+			}
+
+		</script>
+	</head>
+	<body>
+		<div data-role="page" >
+			<div data-role="header" >	
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="index.php">Home</a>
+						</li>
+						<li>
+							<a href="navigasi.php">Navigasi</a>
+						</li>
+						<li>
+							<a href="lokasi.php">Daftar Hotel</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="content">				
+				<h3>HOTEL AWAL</h3>
+				<select id="hotel_asal"></select>
+				<fieldset class="ui-grid-a">
+				<input type="hidden" id="id_hotel_asal" name="id_hotel_asal" disabled="disabled"/>
+				<input type="hidden" id="nama_hotel_asal" name="nama_hotel_asal" disabled="disabled"/>
+				<div class="ui-block-a"><input type="text" id="lat_hotel_asal" name="lat_hotel_asal" disabled="disabled"/></div>
+				<div class="ui-block-b"><input type="text" id="long_hotel_asal" name="long_hotel_asal" disabled="disabled"/></div>
+				</fieldset>
+				<h3>HOTEL TUJUAN</h3>	
+				<select id="hotel_tujuan"></select>
+				<fieldset class="ui-grid-a">
+				<input type="hidden" id="id_hotel_tujuan" name="id_hotel_tujuan" />
+				<input type="hidden" id="nama_hotel_tujuan" name="nama_hotel_tujuan" />
+				<div class="ui-block-a"><input type="text" id="lat_hotel_tujuan" name="lat_hotel_tujuan" disabled="disabled"/></div>
+				<div class="ui-block-b"><input type="text" id="long_hotel_tujuan" name="long_hotel_tujuan" disabled="disabled"/></div>
+				</fieldset>
+				<input type="button" id="jarak" value="Hitung Jarak" onclick="getdist()" />
+				<p id="distance"></p>
+				<input type="button" id="rute" value="Tampil Rute" />
+				<table data-role="table" border="1" id="table" data-mode="table" class="ui-responsive table-stroke">
+					<thead>
+						<tr>
+							<th>NAMA RUTE</th>
+							<th>NAMA PERSIMPANGAN</th>
+							<th>ARAH</th>
+							<th>LATITUDE</th>
+							<th>LONGITUDE</th>
+							<th>JARAK</th>
+						</tr>
+					</thead>
+					<tbody id="data-rute">
+						
+					</tbody>
+				</table>
+
+				<button id="certain_route">
+					Tentukan Rute
+				</button>
+				<br />
+
+				<div id="route_floyd_warshall">
+					<strong><span style="text-decoration: underline;">RUTE 1 : </span></strong>
+					<br />
+					Jumlah Persimpangan : <span id="result_certain_route1"></span>
+					<br />
+					Total Jarak : <span id="distance_route1"></span><span> Km</span>
+					<br />
+					<br />
+					<strong><span style="text-decoration: underline;">RUTE 2 : </span></strong>
+					<br />
+					Jumlah Persimpangan : <span id="result_certain_route2"></span>
+					<br />
+					Total Jarak : <span id="distance_route2"></span><span> Km</span>
+					<br />
+					<br />
+
+					<strong>Pilihan rute menurut metode Floyd Warshall : </strong>
+					<br />
+					<span id="best_route"></span> dengan jumlah persimpangan : <span id="crossroad_best_route"></span> dan dengan jarak : <span id="distance_best_route"></span> Km.
+				</div>
+				<br />
+
+				<form method="post" action="display_maps.php" target="_self">
+					<input type="hidden" id="id_hotel_asal_maps" name="id_hotel_asal_maps" />
+					<input type="hidden" id="id_hotel_tujuan_maps" name="id_hotel_tujuan_maps" />	
+					<input type="submit" id="submit" name="submit" value="Tampilkan Peta" />
+				</form>
+
+			</div>
+		</div>
+
+	</body>
+</html>
